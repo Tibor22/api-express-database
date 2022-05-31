@@ -31,6 +31,8 @@ const getAllPets = async (req, res) => {
 }
 
 const getPet = async (req, res) => {
+
+    
    
     return pet = await db.query(`SELECT * FROM pets WHERE id=${+req.params.id}`);
 }
