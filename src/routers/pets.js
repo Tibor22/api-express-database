@@ -8,6 +8,9 @@ const { body, validationResult }  = require('express-validator')
 
 routes.get('/',async (req, res) => petsControllers.getAllPets(req, res))
 routes.get('/:id',async(req, res) => petsControllers.getPet(req, res ))
+routes.put('/:id',async(req, res) => petsControllers.updatePet(req, res ))
+routes.delete('/:id',async(req, res) => petsControllers.deletePet(req, res ))
+routes.patch('/:id',async(req, res) => petsControllers.patchPet(req, res ))
 
 
 routes.post('/',body(['microchip','name','type','breed','age']).exists(),async(req, res) => {

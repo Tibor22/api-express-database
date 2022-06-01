@@ -17,11 +17,43 @@ async function getPet(req,res) {
 
 async function postPet(req, res) {
     const pet = await petsRespitory.postPet(req,res)
-    res.json({pet:{...pet.rows[0]}})
+   return res.json({pet:{...pet.rows[0]}})
+}
+
+async function updatePet(req, res) {
+    try {
+        const updatedPet = await petsRespitory.updatePet(req,res)
+        return res.json({pet:{...updatedPet.rows[0]}})
+    }catch(err) {
+        console.log(err);
+    }
+
+}
+
+async function deletePet(req, res) {
+    try {
+        const deletedPet = await petsRespitory.deletePet(req,res)
+        return res.json({pet:{...deletedPet.rows[0]}})
+    } catch(err) {
+        console.log(err);
+    }
+
+}
+async function patchPet(req, res) {
+    try {
+        const updatedPet = await petsRespitory.patchPet(req, res)
+        return res.json({pet:{...updatedPet.rows[0]}})
+    } catch(err) {
+        console.log(err);
+    }
+
 }
 
 module.exports = {
     getAllPets,
     getPet,
     postPet,
+    updatePet,
+    deletePet,
+    patchPet,
 }

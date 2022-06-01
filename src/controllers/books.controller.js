@@ -12,11 +12,23 @@ async function getBook(req,res) {
 
 async function postBook(req,res) {
     const book = await booksRespitory.postBook(req,res)
-    return res.json({...book.rows[0]})
+    return res.status(300).json({...book.rows[0]})
+}
+
+async function updateBook(req,res) {
+   const updatedBook = await booksRespitory.updateBook(req,res)
+   return res.json({ book: updatedBook.rows[0]})
+}
+
+async function deleteBook(req,res) {
+  const deletedBook = await booksRespitory.deleteBook(req,res)
+  return res.status(200).json({book:deletedBook.rows[0]})
 }
 
 module.exports = {
     getBooks,
     getBook,
     postBook,
+    updateBook,
+    deleteBook,
 }
